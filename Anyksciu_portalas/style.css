@@ -1,0 +1,464 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fcf9f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-section {
+    background: #f7f3e8 url('images/background.png') no-repeat center bottom/cover !important;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-overlay {
+    flex-grow: 1;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.5) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 20px;
+}
+
+.navbar {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 12px 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: #1a4d3a;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #df8842;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 650px;
+    margin: 12vh auto 0 auto; /* PAKEISTA: 'auto' šonuose (antras ir ketvirtas parametras) pastato bloką į vidurį */
+    z-index: 2;
+    padding: 0 20px; /* Pridėjau šiek tiek vietos šonuose mobiliesiems ekranams */
+}
+
+.hero-content h1 {
+    color: #ffffff;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 34px;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.cta-btn {
+    background-color: #1a4d3a;
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background-color: #24634b;
+    transform: translateY(-2px);
+}
+
+.section-subtitle {
+    display: block;
+    color: #df8842;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #1a4d3a;
+    margin-bottom: 15px;
+}
+
+.info-section {
+    padding: 80px 0;
+    background-color: #f5efe1 !important;
+    text-align: center;
+}
+
+.info-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 17px;
+    color: #666;
+}
+
+.maps-section {
+    padding: 80px 0;
+    background-color: #f5efe1;
+}
+
+.section-desc {
+    color: #666;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.maps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.map-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 77, 58, 0.06);
+    border: 1px solid #e8dfcb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.map-card h3 {
+    color: #1a4d3a;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.map-preview-container {
+    width: 100%;
+    height: 240px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background: #eef2f0;
+    border: 1px solid #e8dfcb;
+}
+
+.map-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.map-card:hover .map-preview-img {
+    transform: scale(1.02);
+}
+
+.map-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.open-map-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: #1a4d3a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.open-map-btn:hover {
+    background-color: #df8842;
+    transform: translateY(-1px);
+}
+
+.map-page-body {
+    background-color: #fcf9f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.map-page-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    border-radius: 0;
+    max-width: 100%;
+}
+
+.map-page-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.map-page-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto 20px auto;
+}
+
+.back-link {
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #df8842;
+}
+
+.map-page-container h1 {
+    font-size: 28px;
+    color: #1a4d3a;
+    margin: 0 0 10px 0;
+}
+
+.map-page-container p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    max-width: 800px;
+    line-height: 1.5;
+}
+
+.map-section-wrapper {
+    background-color: #f5efe1; /* Šviesi, tavo portalui būdinga spalva */
+    padding: 40px 0;           /* Erdvė viršuje ir apačioje */
+    display: flex;             /* Padeda centruoti žemėlapį */
+    justify-content: center;   /* Centruoja horizontaliai */
+}
+
+.full-page-iframe-container {
+    width: 98%;             /* Padarome šiek tiek siauresnį nei ekranas */
+    max-width: 1400px;      /* Kad nebūtų per platus labai dideliuose ekranuose */
+    height: 85vh;          /* Fiksuotas aukštis, kad visada būtų lengvai valdomas */
+    margin: 20px auto;      /* Automatiškai centruoja ir palieka erdvės viršuje/apačioje */
+    border-radius: 15px;    /* Suapvalinti kampai atrodo profesionaliau */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Lengvas šešėlis, kad išsiskirtų iš fono */
+    overflow: hidden;       /* Kad rėmelis gražiai apkirptų žemėlapį */
+}
+
+.full-page-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .maps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Sutvarkyta Anykščių stiliaus apačios skiltis (Footer) --- */
+.footer-cta-section {
+    background-color: #f5efe1;
+    padding: 60px 0 60px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Kortelė pritaikyta prie tavo dizaino spalvų */
+.blue-cta-card {
+    background-color: #1a4d3a; /* Tamsiai žalia iš tavo dizaino */
+    border-radius: 20px;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column; /* Tekstas viršuje, mygtukas apačioje, kad nesusigrūstų */
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(26, 77, 58, 0.15);
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.cta-card-content h2 {
+    color: #ffffff !important;
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.cta-card-content p {
+    color: #e2efe0; /* Šviesiai žalsvas/balsvas tekstas */
+    font-size: 16px;
+}
+
+.cta-card-subtitle {
+    color: #df8842; /* Oranžinė iš tavo dizaino */
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* Oranžinis mygtukas, derantis prie bendro stiliaus */
+.blue-cta-btn {
+    background-color: #df8842; /* Oranžinė */
+    color: white;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.blue-cta-btn:hover {
+    background-color: #c97532; /* Tamsesnė oranžinė užvedus */
+    transform: translateY(-2px);
+}
+
+/* Labai tamsi žalia/pilka fono spalva pačiam dugnui */
+.main-footer {
+    background-color: #0f241b; /* Labai tamsi samanų žalia */
+    padding: 60px 0 60px 0;
+    color: #cbd5e1;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-brand h3, .footer-links-col h3 {
+    color: #ffffff;
+    font-size: 19px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-brand p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #a7bfb4; 
+}
+.footer-brand .author-info {
+    margin-top: 15px;      
+    font-size: 16px;       
+    color: #ffffff;        
+    font-weight: 500;      
+}
+
+.footer-links-col ul {
+    list-style: none;
+}
+
+.footer-links-col ul li {
+    margin-bottom: 14px;
+}
+
+.footer-links-col ul li a {
+    color: #a7bfb4;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.footer-links-col ul li a:hover {
+    color: #df8842; /* Užvedus nuorodos nušvinta tavo oranžine */
+}
+
+/* --- Formos konteinerio stilius --- */
+.contact-form-container {
+    width: 95%;           
+    max-width: 900px;     
+    height: 900px;        
+    margin: 40px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.contact-form-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Pilnas prisitaikymas telefonams */
+@media (max-width: 768px) {
+    .blue-cta-card {
+        padding: 30px;
+        gap: 20px;
+    }
+    .cta-card-content h2 {
+        font-size: 26px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
